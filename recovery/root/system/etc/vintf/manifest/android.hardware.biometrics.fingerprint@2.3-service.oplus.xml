@@ -1,0 +1,11 @@
+<!--
+    Input:
+        hardware/oplus/hidl/fingerprint/android.hardware.biometrics.fingerprint@2.3-service.oplus.xml
+-->
+<manifest version="9.0" type="device">
+    <hal format="hidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.3::IBiometricsFingerprint/default</fqname>
+    </hal>
+</manifest>

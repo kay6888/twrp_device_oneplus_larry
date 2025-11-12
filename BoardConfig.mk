@@ -1,0 +1,174 @@
+#
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+DEVICE_PATH := device/oneplus/OP5958L1
+
+# Platform
+TARGET_BOARD_PLATFORM := sm6375
+TARGET_BOARD_SUFFIX := _64
+TARGET_BOOTLOADER_BOARD_NAME := CPH2515
+
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    odm \
+    system \
+    product \
+    vendor_dlkm \
+    system_ext \
+    vendor
+BOARD_USES_RECOVERY_AS_BOOT := true
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 := 
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := cortex-a76
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
+
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := holi
+TARGET_NO_BOOTLOADER := true
+
+# Display
+TARGET_SCREEN_DENSITY := 480
+TARGET_USES_VULKAN := true
+
+# Kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dtb.img
+BOARD_BOOT_HEADER_VERSION := 3
+BOARD_MKBOOTIMG_ARGS := \
+    --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_KERNEL_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_CMDLINE := \
+    console=ttyMSM0,115200n8 \
+    androidboot.console=ttyMSM0 \
+    androidboot.hardware=qcom \
+    androidboot.memcg=1 \
+    lpm_levels.sleep_disabled=1 \
+    msm_rtb.filter=0x237 \
+    service_locator.enable=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    swiotlb=0 \
+    pcie_ports=compat \
+    iptable_raw.raw_before_defrag=1 \
+    ip6table_raw.raw_before_defrag=1 \
+    androidboot.init_fatal_reboot_target=recovery
+BOARD_DTB_OFFSET := 0x0af00000
+BOARD_RAMDISK_OFFSET := 0x02000000
+TARGET_KERNEL_SOURCE := kernel/oneplus/sm6375
+TARGET_KERNEL_CONFIG := vendor/holi-qgki_defconfig vendor/debugfs.config
+
+# Kernel - prebuilt
+TARGET_FORCE_PREBUILT_KERNEL := true
+ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := 
+endif
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_BOOTIMAGE_PARTITION_SIZE := 167772160
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 167772160
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_VENDOR := vendor
+BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
+BOARD_SUPER_PARTITION_GROUPS := oneplus_dynamic_partitions
+BOARD_ONEPLUS_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor vendor_dlkm odm
+BOARD_ONEPLUS_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
+
+# Platform
+TARGET_BOARD_PLATFORM := holi
+
+ Partitions
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_USES_METADATA_PARTITION := true
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware
+TARGET_IS_VNDK_VERSION_FROM_MANIFEST := false
+
+# Recovery
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
+
+# TWRP specific build flags
+TW_THEME := portrait_hdpi
+TW_EXTRA_LANGUAGES := true
+TW_USE_TOOLBOX := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_REPLICATION := true
+TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_LPDUMP := true
+TW_INCLUDE_LPTOOLS := true
+TW_USE_NEW_MINUIFORMAT := 1
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_USE_FSCRYPT_POLICY := 1
+TW_USE_INITRC := 1
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_NO_SCREEN_BLANK := true
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES +=  /system/lib64/libion.so
+TW_EXCLUDE_DEFAULT_USB_MODES := true
+TARGET_USES_LOGD := true
+TW_HAS_MBM := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_FUSE_NTFS := true
+TW_NO_EXFAT_FUSE := true
+TW_NO_EXFAT := true
+TW_DEVICE_RESOLUTION := 2400x1080
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+TW_USE_NEW_MINUIFORMAT := 1
+TW_ALWAYS_RMRF := true
+TW_SKIP_CHECK_RAM_SIZE := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_SYSTEM_VERSION := 13
+TW_INCLUDE_NTFS_3G := true
+TW_OEM_BUILD := true
+TW_SUPPORT_INPUT_FOREGROUND_WM := true
+TW_SUPPORT_SCREENSHOT := true
+TW_MAX_BRIGHTNESS := 2047
+TW_DEFAULT_BRIGHTNESS := 100
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
+TW_POWER_BUTTON_GESTURE := 8
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_SMP := true
+
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
