@@ -18,7 +18,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from the proprietary version
-$(call inherit-product, device/oneplus/CPH2515/device.mk)
+$(call inherit-product, device/oneplus/OP5958L1/device.mk)
 
 LOCAL_PATH := device/oneplus/OP5958L1
 
@@ -95,9 +95,6 @@ PRODUCT_PACKAGES += \
 # DTBO
 PRODUCT_KERNEL_DTBO := $(DEVICE_PATH)/prebuilt/dtbo.img
 
-# VBMeta
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-service-qti
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
