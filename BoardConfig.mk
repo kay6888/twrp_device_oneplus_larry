@@ -81,7 +81,7 @@ BOARD_KERNEL_CMDLINE := \
 BOARD_DTB_OFFSET := 0x0af00000
 BOARD_RAMDISK_OFFSET := 0x02000000
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm6375
-TARGET_KERNEL_CONFIG := vendor/holi-qgki_defconfig vendor/debugfs.config
+TARGET_KERNEL_CONFIG := sm6375_defconfi 
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -89,7 +89,7 @@ ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_INCLUDE_DTB_IN_BOOTIMG := 
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 endif
 
 # Partitions
@@ -163,12 +163,5 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
 TW_POWER_BUTTON_GESTURE := 8
 
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_SMP := true
 
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
