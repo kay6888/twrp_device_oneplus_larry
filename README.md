@@ -1,4 +1,4 @@
-# Android device tree for OnePlus CPH2467 (OP5958L1)
+# Android device tree for OnePlus CPH2515 (OP5958L1)
 
 ```
 #
