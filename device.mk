@@ -20,7 +20,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from the proprietary version
 $(call inherit-product, device/oneplus/OP5958L1/device.mk)
 
-LOCAL_PATH := device/oneplus/OP5958L1
+LOCAL_PATH := device/oneplus/larry
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
