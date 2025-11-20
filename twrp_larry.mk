@@ -16,8 +16,8 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from OP5958L1 device
 $(call inherit-product, device/oneplus/larry/device.mk)
 
-PRODUCT_DEVICE := OP5958L1
-PRODUCT_NAME := twrp_OP5958L1
+PRODUCT_DEVICE := larry
+PRODUCT_NAME := twrp_larry
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := CPH2515
 PRODUCT_MANUFACTURER := oneplus
