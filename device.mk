@@ -101,7 +101,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/oneplus/OP5958L1/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/oneplus/larry/recovery.fstab
 
 # Additional vendor binaries
 PRODUCT_PACKAGES += \
