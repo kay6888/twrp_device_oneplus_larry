@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/oneplus/OP5958L1
+DEVICE_PATH := device/oneplus/larry
 
 # Platform
 TARGET_BOARD_PLATFORM := Qualcomm 
