@@ -14,7 +14,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from OP5958L1 device
-$(call inherit-product, device/oneplus/OP5958L1/device.mk)
+$(call inherit-product, device/oneplus/larry/device.mk)
 
 PRODUCT_DEVICE := OP5958L1
 PRODUCT_NAME := twrp_OP5958L1
