@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2024 The Android Open Source Project
+SPDX-License-Identifier: Apache-2.0
+
+This is a template for local_manifests/roomservice.xml
+Used for syncing device tree repositories when building TWRP for OnePlus Larry (CPH2515)
+-->
+<manifest>
+  <!-- OnePlus Larry (CPH2515) Device Tree -->
+  <project name="kay6888/twrp_device_oneplus_larry" path="device/oneplus/larry" remote="github" revision="main" />
+  
+  <!-- Kernel -->
+  <project name="oneplus/kernel_oneplus_sm6375" path="kernel/oneplus/sm6375" remote="github" revision="main" />
+  
+  <!-- Vendor -->
+  <project name="oneplus/vendor_oneplus_larry" path="vendor/oneplus/larry" remote="github" revision="main" />
+</manifest>

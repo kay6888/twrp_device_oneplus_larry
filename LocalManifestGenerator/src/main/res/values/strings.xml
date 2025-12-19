@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2024 The Android Open Source Project
+SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Local Manifest Generator</string>
+    <string name="app_title">OnePlus Larry Device Tree</string>
+    <string name="app_description">Generate local_manifests files for building TWRP for OnePlus CPH2515 (Larry)</string>
+    <string name="generate_roomservice">Generate roomservice.xml</string>
+    <string name="generate_local_manifests">Generate local_manifests.xml</string>
+    <string name="status_ready">Ready to generate manifest files</string>
+</resources>
