@@ -63,17 +63,9 @@ TARGET_OTA_ASSERT_DEVICE := CPH2515
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/etc/bootconfig:$(TARGET_COPY_OUT_RECOVERY)/root/etc/bootconfig
 
-# Prebuilt kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  TARGET_FORCE_PREBUILT_KERNEL := true
-  LOCAL_KERNEL := device/oneplus/CPH2515/prebuilt/Image.gz-dtb
-else
-  TARGET_FORCE_PREBUILT_KERNEL := true
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+# Kernel built from source with KernelSU support
+# SOURCE: kernel/oneplus/sm6375 (with KernelSU patches)
+# CONFIG: holi_QGKI.config + vendor/ksu.config
 
 # AVB
 PRODUCT_PACKAGES += \
